@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
-const TodoItem = ({ todo, onDeleteTodoItem, isDone, onDeleteTodoItem }) => {
-  const { id, title, content } = todo;
+const TodoItem = ({ todo, onDeleteTodoItem, onToggleTodoItem }) => {
+  const { id, title, content, isDone } = todo;
+
   return (
     <li className="todo-card-item">
       <article>

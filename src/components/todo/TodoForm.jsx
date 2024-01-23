@@ -6,12 +6,16 @@ const TodoForm = ({ onSubmitTodo }) => {
     const title = e.target.title.value;
     const content = e.target.content.value;
 
-    // onSubmitTodo({
-    //   id: crypto.randomUUID(), //아이디웬만하면안겹치게하는거
-    //   title,
-    //   content,
-    //   isDone: false,
-    // });
+    if (!title || !content) {
+      return;
+    }
+
+    onSubmitTodo({
+      id: crypto.randomUUID(), //아이디웬만하면안겹치게하는거
+      title,
+      content,
+      isDone: false,
+    });
     e.target.reset(); //setState사용안해도 form안에 있는reset()을써준다
   };
 

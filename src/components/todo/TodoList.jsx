@@ -1,17 +1,17 @@
-/* eslint-disable no-unused-vars */
 import TodoItem from "./TodoItem";
 
-const TodoList = ({ todos, onDeleteTodoItem, onDeleteTodoItem }) => {
+/* eslint-disable react/prop-types */
+const TodoList = ({ headTitle, todos, onDeleteTodoItem, onToggleTodoItem }) => {
   return (
     <section>
-      <h3>Working</h3>
+      <h2>{headTitle}</h2>
       <ul>
         {todos.map((todo) => (
           <TodoItem
             key={todo.id}
             todo={todo}
             onDeleteTodoItem={onDeleteTodoItem}
-            onDeleteTodoItem={onDeleteTodoItem}
+            onToggleTodoItem={onToggleTodoItem}
           />
         ))}
       </ul>

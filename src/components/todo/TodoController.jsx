@@ -16,10 +16,9 @@ const TodoController = () => {
     setTodos((prevTodos) => [todo, ...prevTodos]);
   };
   const onDeleteTodoItem = (id) => {
-    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== todo));
+    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
   };
-  const onSubmitTodo = (todo) => {};
-  const onDeleteTodoItem = (id) => {
+  const onToggleTodoItem = (id) => {
     setTodos((prevTodos) =>
       prevTodos.map((todoItem) => {
         if (todoItem.id === id) {
@@ -33,13 +32,23 @@ const TodoController = () => {
     );
   };
 
+  const workingTodos = todos.filter((todo) => !todo.isDone);
+  const doneTodos = todos.filter((todo) => todo.isDone);
+
   return (
     <main>
       <TodoForm onSubmitTodo={onSubmitTodo} />
       <TodoList
-        todos={todos}
+        headTitle="Working"
+        todos={workingTodos}
         onDeleteTodoItem={onDeleteTodoItem}
+        onToggleTodoItem={onToggleTodoItem}
+      />
+      <TodoList
+        headTitle="Done"
+        todos={doneTodos}
         onDeleteTodoItem={onDeleteTodoItem}
+        onToggleTodoItem={onToggleTodoItem}
       />
     </main>
   );
